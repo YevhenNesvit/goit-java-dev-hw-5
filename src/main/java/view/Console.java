@@ -30,6 +30,7 @@ public class Console implements View {
         List<Command> commands = new ArrayList<>();
         commands.add(new Help(view));
         commands.add(new PostPet(view));
+        commands.add(new PutPet(view));
         commands.add(new Exit(view));
 
         return commands;
