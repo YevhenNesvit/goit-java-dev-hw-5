@@ -3,18 +3,18 @@ package models;
 import java.util.Arrays;
 
 public class Pet {
-    Integer id;
+    Long id;
     Category category;
     String name;
     String[] photoUrls;
     Tag[] tags;
     String status;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class PetToJSONConverter {
 
-    public void petToJson(Integer id, Integer categoryId, String categoryName, String name, String[] photoUrls,
+    public void petToJson(Long id, Integer categoryId, String categoryName, String name, String[] photoUrls,
                                Tag[] tags, String status) {
         Category category = new Category();
         category.setId(categoryId);

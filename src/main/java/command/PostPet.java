@@ -24,7 +24,7 @@ public class PostPet implements Command {
 
     @Override
     public void execute() {
-        int id;
+        long id;
         int categoryId;
         String categoryName;
         String name;
