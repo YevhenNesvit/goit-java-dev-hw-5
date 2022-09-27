@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.util.List;
 
 public class PetService {
-    private static final String PET = "https://petstore.swagger.io/v2/pet";
+    private static final String PET = "https://petstore.swagger.io/v2/pet/";
     private static final String PETS_BY_STATUS = "https://petstore.swagger.io/v2/pet/findByStatus";
     PetToJSONConverter converter = new PetToJSONConverter();
     PetUtils petUtils = new PetUtils();
@@ -103,5 +103,29 @@ public class PetService {
             System.out.println("GET request not worked");
         }
         return petUtils.getMultiplePets(response);
+    }
+
+    public Pet getPetById(Integer id) throws IOException {
+        URL url = new URL(String.format(PET + id));
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        connection.setRequestProperty("Content-Type", "application/json");
+
+        int responseCode = connection.getResponseCode();
+        System.out.println("GET response code: " + responseCode);
+        StringBuffer response = new StringBuffer();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in =
+                    new BufferedReader(
+                            new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+        } else {
+            System.out.println("GET request not worked");
+        }
+        return petUtils.petToObj(response);
     }
 }

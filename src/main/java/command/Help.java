@@ -21,6 +21,7 @@ public class Help implements Command {
         view.write(String.format("Enter %s to add pet", PostPet.POST_PET));
         view.write(String.format("Enter %s to update pet", PutPet.UPDATE_PET));
         view.write(String.format("Enter %s to view pets by status", GetPetsByStatus.GET_PETS_BY_STATUS));
+        view.write(String.format("Enter %s to view pet by id", GetPetById.GET_PET_BY_ID));
         view.write(String.format("Enter %s to exit program", Exit.EXIT));
     }
 }

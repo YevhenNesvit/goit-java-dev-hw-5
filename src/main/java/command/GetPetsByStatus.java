@@ -6,7 +6,7 @@ import view.View;
 import java.io.IOException;
 
 public class GetPetsByStatus implements Command {
-    public static final String GET_PETS_BY_STATUS = "get pets by status";
+    public static final String GET_PETS_BY_STATUS = "pets by status";
     private final View view;
     PetService petService = new PetService();
 

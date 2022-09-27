@@ -32,6 +32,7 @@ public class Console implements View {
         commands.add(new PostPet(view));
         commands.add(new PutPet(view));
         commands.add(new GetPetsByStatus(view));
+        commands.add(new GetPetById(view));
         commands.add(new Exit(view));
 
         return commands;

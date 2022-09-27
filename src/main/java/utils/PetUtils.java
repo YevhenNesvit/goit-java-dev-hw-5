@@ -16,4 +16,10 @@ public class PetUtils {
 
         return gson.fromJson(String.valueOf(response), type);
     }
+
+    public Pet petToObj(StringBuffer response) {
+        String userToObj = String.valueOf(response);
+
+        return new Gson().fromJson(userToObj, Pet.class);
+    }
 }
