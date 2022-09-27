@@ -20,7 +20,7 @@ public class GetPetById implements Command {
 
     @Override
     public void execute() {
-        int id;
+        long id;
         while (true) {
             try {
                 view.write("Please, enter pet id: ");

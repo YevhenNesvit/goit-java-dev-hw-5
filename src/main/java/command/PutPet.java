@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PutPet implements Command {
-    public static final String UPDATE_PET = "update pet";
+    public static final String PUT_PET = "update pet";
     private final View view;
     PetService petService = new PetService();
 
@@ -19,7 +19,7 @@ public class PutPet implements Command {
 
     @Override
     public boolean canExecute(String input) {
-        return input.equals(UPDATE_PET);
+        return input.equals(PUT_PET);
     }
 
     @Override
