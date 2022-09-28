@@ -27,8 +27,16 @@ public class PostPetById implements Command {
         try {
             while (true) {
                 try {
-                    view.write("Please, enter name to update: ");
-                    name = view.read();
+                    while (true) {
+                        view.write("Please, enter name to update: ");
+                        String n = view.read();
+                        if (!n.equals("")) {
+                            name = n;
+                            break;
+                        } else {
+                            System.out.println("Name can not be empty");
+                        }
+                    }
                     view.write("Please, enter status to update (available, pending or sold): ");
                     status = view.read();
                     view.write("Please, enter pet id: ");

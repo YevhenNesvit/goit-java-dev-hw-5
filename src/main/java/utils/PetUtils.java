@@ -58,4 +58,9 @@ public class PetUtils {
 
         return gson.toJson(pet);
     }
+
+    public boolean IsPetExists(Long id) throws IOException {
+        PetService petService = new PetService();
+        return petService.getPetById(id) != null;
+    }
 }

@@ -27,7 +27,7 @@ public class PetService {
         dos.writeBytes(pet);
 
         int responseCode = connection.getResponseCode();
-        System.out.println("POST response code: " + responseCode);
+//        System.out.println("POST response code: " + responseCode);
         if (responseCode == HttpURLConnection.HTTP_OK) {
             BufferedReader in =
                     new BufferedReader(
@@ -57,7 +57,7 @@ public class PetService {
         dos.writeBytes(pet);
 
         int responseCode = connection.getResponseCode();
-        System.out.println("PUT response code: " + responseCode);
+//        System.out.println("PUT response code: " + responseCode);
         if (responseCode == HttpURLConnection.HTTP_OK) {
             BufferedReader in =
                     new BufferedReader(
@@ -81,7 +81,7 @@ public class PetService {
         connection.setRequestProperty("Content-Type", "application/json");
 
         int responseCode = connection.getResponseCode();
-        System.out.println("GET response code: " + responseCode);
+//        System.out.println("GET response code: " + responseCode);
         StringBuffer response = new StringBuffer();
         if (responseCode == HttpURLConnection.HTTP_OK) {
             BufferedReader in =
@@ -134,7 +134,7 @@ public class PetService {
         dos.writeBytes(pet);
 
         int responseCode = connection.getResponseCode();
-        System.out.println("POST response code: " + responseCode);
+//        System.out.println("POST response code: " + responseCode);
         if (responseCode == HttpURLConnection.HTTP_OK) {
             BufferedReader in =
                     new BufferedReader(
@@ -149,5 +149,15 @@ public class PetService {
         } else {
             System.out.println("POST request not worked");
         }
+    }
+
+    public void deletePetById(Long id) throws IOException {
+        URL url = new URL(PET + id);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("DELETE");
+        connection.setRequestProperty("Content-Type", "application/json");
+
+//        int responseCode = connection.getResponseCode();
+//        System.out.println("DELETE response code: " + responseCode);
     }
 }
