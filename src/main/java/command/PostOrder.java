@@ -44,7 +44,7 @@ public class PostOrder implements Command {
                     DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
                     df.setTimeZone(tz);
                     shipDate = df.format(new Date());
-                    view.write("Please, enter status of new order: ");
+                    view.write("Please, enter status of new order (placed, approved or delivered): ");
                     status = view.read();
                     view.write("Please, enter true if order is completed or false if not: ");
                     complete = Boolean.parseBoolean(view.read());
