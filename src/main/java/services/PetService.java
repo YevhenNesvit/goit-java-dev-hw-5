@@ -157,8 +157,8 @@ public class PetService {
         connection.setRequestMethod("DELETE");
         connection.setRequestProperty("Content-Type", "application/json");
 
-        int responseCode = connection.getResponseCode();
-        System.out.println("DELETE response code: " + responseCode);
+//        int responseCode = connection.getResponseCode();
+//        System.out.println("DELETE response code: " + responseCode);
     }
 
     public void uploadFile(Long id, String filePath) throws IOException {
