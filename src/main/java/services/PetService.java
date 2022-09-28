@@ -7,6 +7,7 @@ import utils.PetUtils;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 public class PetService {
@@ -116,9 +117,9 @@ public class PetService {
                 response.append(inputLine);
             }
             in.close();
-        } else {
-            System.out.println("GET request not worked");
-        }
+        } //else {
+//            System.out.println("GET request not worked");
+//        }
         return petUtils.petToObj(response);
     }
 
@@ -159,5 +160,11 @@ public class PetService {
 
 //        int responseCode = connection.getResponseCode();
 //        System.out.println("DELETE response code: " + responseCode);
+    }
+
+    public void uploadFile(Long id, String filePath) throws IOException {
+        URL url = new URL(PET + id + "/uploadImage");
+        File file = new File(new File("src" + File.separator + "main" + File.separator + "resources"
+                + File.separator + filePath).getAbsolutePath());
     }
 }

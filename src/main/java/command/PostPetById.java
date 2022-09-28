@@ -1,6 +1,7 @@
 package command;
 
 import services.PetService;
+import utils.PetUtils;
 import view.View;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ public class PostPetById implements Command {
     public static final String POST_PET_BY_ID = "update pet by id";
     private final View view;
     PetService petService = new PetService();
+    PetUtils petUtils = new PetUtils();
 
     public PostPetById(View view) {
         this.view = view;
@@ -41,13 +43,17 @@ public class PostPetById implements Command {
                     status = view.read();
                     view.write("Please, enter pet id: ");
                     id = Integer.parseInt(view.read());
-                    break;
+                    if (petUtils.IsPetExists(id)) {
+                        petService.updatePetById(id, name, status);
+                        view.write("Pet with id " + id + " successfully updated");
+                        break;
+                    } else {
+                        System.out.println("Pet id doesn't exists");
+                    }
                 } catch (NumberFormatException e) {
                     view.write("Invalid value. Use digits");
                 }
             }
-            petService.updatePetById(id, name, status);
-            view.write("Pet with id " + id + " successfully updated");
         } catch (IOException e) {
             e.getStackTrace();
         }
