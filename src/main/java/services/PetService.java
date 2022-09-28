@@ -7,7 +7,6 @@ import utils.PetUtils;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.List;
 
 public class PetService {
@@ -158,8 +157,8 @@ public class PetService {
         connection.setRequestMethod("DELETE");
         connection.setRequestProperty("Content-Type", "application/json");
 
-//        int responseCode = connection.getResponseCode();
-//        System.out.println("DELETE response code: " + responseCode);
+        int responseCode = connection.getResponseCode();
+        System.out.println("DELETE response code: " + responseCode);
     }
 
     public void uploadFile(Long id, String filePath) throws IOException {

@@ -1,12 +1,10 @@
 package models;
 
-import java.util.Date;
-
 public class Order {
     Integer id;
     Integer petId;
     Integer quantity;
-    Date shipDate;
+    String shipDate;
     String status;
     boolean complete;
 
@@ -34,11 +32,11 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public Date getShipDate() {
+    public String getShipDate() {
         return shipDate;
     }
 
-    public void setShipDate(Date shipDate) {
+    public void setShipDate(String shipDate) {
         this.shipDate = shipDate;
     }
 
