@@ -19,4 +19,10 @@ public class StoreUtils {
 
         return gson.toJson(order);
     }
+
+    public Order orderToObj(StringBuffer response) {
+        String orderToObj = String.valueOf(response);
+
+        return new Gson().fromJson(orderToObj, Order.class);
+    }
 }

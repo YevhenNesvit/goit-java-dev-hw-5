@@ -23,9 +23,9 @@ public class PetUtils {
     }
 
     public Pet petToObj(StringBuffer response) {
-        String userToObj = String.valueOf(response);
+        String petToObj = String.valueOf(response);
 
-        return new Gson().fromJson(userToObj, Pet.class);
+        return new Gson().fromJson(petToObj, Pet.class);
     }
 
     public String petToString(Long id, Integer categoryId, String categoryName, String name, String[] photoUrls,

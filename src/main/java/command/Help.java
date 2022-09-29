@@ -26,6 +26,7 @@ public class Help implements Command {
         view.write(String.format("Enter %s to delete pet by id", DeletePetById.DELETE_PET_BY_ID));
         view.write(String.format("Enter %s to upload pet image", PostPetImage.ADD_IMAGE));
         view.write(String.format("Enter %s to add order", PostOrder.POST_ORDER));
+        view.write(String.format("Enter %s to view order by id", GetOrderById.GET_ORDER_BY_ID));
         view.write(String.format("Enter %s to exit program", Exit.EXIT));
     }
 }
