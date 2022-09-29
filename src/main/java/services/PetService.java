@@ -160,10 +160,4 @@ public class PetService {
 //        int responseCode = connection.getResponseCode();
 //        System.out.println("DELETE response code: " + responseCode);
     }
-
-    public void uploadFile(Long id, String filePath) throws IOException {
-        URL url = new URL(PET + id + "/uploadImage");
-        File file = new File("src" + File.separator + "main" + File.separator + "resources"
-                + File.separator + filePath);
-    }
 }

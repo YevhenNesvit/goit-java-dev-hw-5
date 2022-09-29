@@ -1,17 +1,16 @@
 package command;
 
-import services.PetService;
+import services.UploadService;
 import utils.PetUtils;
 import view.View;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class PostPetImage implements Command {
-    public static final String ADD_IMAGE = "add pet image";
+    public static final String ADD_IMAGE = "add pet file";
     private final View view;
     PetUtils petUtils = new PetUtils();
-    PetService petService = new PetService();
+    UploadService uploadService = new UploadService();
 
     public PostPetImage(View view) {
         this.view = view;
@@ -29,13 +28,13 @@ public class PostPetImage implements Command {
         try {
             while (true) {
                 try {
-                    view.write("Please, enter file path to upload: ");
+                    view.write("Please, enter file path with extension to upload: ");
                     filPath = view.read();
                     view.write("Please, enter pet id to upload image: ");
                     id = Integer.parseInt(view.read());
                     if (petUtils.IsPetExists(id)) {
-                        petService.uploadFile(id, filPath);
-                        view.write("Image for pet with id " + id + " successfully uploaded");
+                        uploadService.uploadFiles(id, filPath);
+                        view.write("File for pet with id " + id + " successfully uploaded");
                         break;
                     } else {
                         System.out.println("Pet id doesn't exists");
