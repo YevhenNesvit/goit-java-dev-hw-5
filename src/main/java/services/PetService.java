@@ -163,7 +163,7 @@ public class PetService {
 
     public void uploadFile(Long id, String filePath) throws IOException {
         URL url = new URL(PET + id + "/uploadImage");
-        File file = new File(new File("src" + File.separator + "main" + File.separator + "resources"
-                + File.separator + filePath).getAbsolutePath());
+        File file = new File("src" + File.separator + "main" + File.separator + "resources"
+                + File.separator + filePath);
     }
 }
