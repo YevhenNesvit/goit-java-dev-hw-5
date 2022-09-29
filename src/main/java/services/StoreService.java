@@ -9,9 +9,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
 public class StoreService {
     private static final String STORE = "https://petstore.swagger.io/v2/store/order/";
+    private static final String PETS_STATUSES = "https://petstore.swagger.io/v2/store/inventory";
     StoreUtils storeUtils = new StoreUtils();
 
     public void addOrder(Integer id, Integer petId, Integer quantity, String shipDate, String status, boolean complete)
@@ -76,5 +78,29 @@ public class StoreService {
 
 //        int responseCode = connection.getResponseCode();
 //        System.out.println("DELETE response code: " + responseCode);
+    }
+
+    public Map<String, Integer> getPetStatusesList() throws IOException {
+        URL url = new URL(String.format(PETS_STATUSES));
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        connection.setRequestProperty("Content-Type", "application/json");
+
+        int responseCode = connection.getResponseCode();
+//        System.out.println("GET response code: " + responseCode);
+        StringBuffer response = new StringBuffer();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in =
+                    new BufferedReader(
+                            new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+        } //else {
+//            System.out.println("GET request not worked");
+//        }
+        return storeUtils.petsStatusesToObj(response);
     }
 }
