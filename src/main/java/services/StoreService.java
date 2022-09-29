@@ -67,4 +67,14 @@ public class StoreService {
 //        }
         return storeUtils.orderToObj(response);
     }
+
+    public void deleteOrderById(Long id) throws IOException {
+        URL url = new URL(STORE + id);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("DELETE");
+        connection.setRequestProperty("Content-Type", "application/json");
+
+//        int responseCode = connection.getResponseCode();
+//        System.out.println("DELETE response code: " + responseCode);
+    }
 }

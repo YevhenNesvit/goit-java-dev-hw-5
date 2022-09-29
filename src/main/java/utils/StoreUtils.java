@@ -3,6 +3,9 @@ package utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import models.Order;
+import services.StoreService;
+
+import java.io.IOException;
 
 public class StoreUtils {
     public String orderToString(Integer id, Integer petId, Integer quantity, String shipDate, String status, boolean complete) {
@@ -24,5 +27,10 @@ public class StoreUtils {
         String orderToObj = String.valueOf(response);
 
         return new Gson().fromJson(orderToObj, Order.class);
+    }
+
+    public boolean IsOrderExists(Long id) throws IOException {
+        StoreService storeService = new StoreService();
+        return storeService.getOrderById(id) != null;
     }
 }
