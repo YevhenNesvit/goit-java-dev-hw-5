@@ -29,6 +29,7 @@ public class Help implements Command {
         view.write(String.format("Enter %s to view order by id", GetOrderById.GET_ORDER_BY_ID));
         view.write(String.format("Enter %s to delete order by id", DeleteOrderById.DELETE_ORDER));
         view.write(String.format("Enter %s to view pets statuses", GetPetsStatuses.GET_PETS_STATUSES));
+        view.write(String.format("Enter %s to add users with array", PostUsersWithArray.POST_USER_WITH_ARRAY));
         view.write(String.format("Enter %s to exit program", Exit.EXIT));
     }
 }

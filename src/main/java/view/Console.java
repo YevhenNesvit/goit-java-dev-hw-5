@@ -40,6 +40,7 @@ public class Console implements View {
         commands.add(new GetOrderById(view));
         commands.add(new DeleteOrderById(view));
         commands.add(new GetPetsStatuses(view));
+        commands.add(new PostUsersWithArray(view));
         commands.add(new Exit(view));
 
         return commands;
