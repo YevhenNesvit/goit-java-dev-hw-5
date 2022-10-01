@@ -63,6 +63,16 @@ public class UploadService {
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 System.out.println(connection.getResponseCode() + " " + connection.getResponseMessage());
+                BufferedReader in =
+                        new BufferedReader(
+                                new InputStreamReader(connection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                System.out.println(response);
             } else {
                 System.err.println("Загрузка не удалась");
             }
