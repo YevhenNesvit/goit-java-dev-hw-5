@@ -44,6 +44,7 @@ public class Console implements View {
         commands.add(new PostUsersWithList(view));
         commands.add(new GetUserByUsername(view));
         commands.add(new PutUserByUsername(view));
+        commands.add(new DeleteUserByUsername(view));
         commands.add(new Exit(view));
 
         return commands;
