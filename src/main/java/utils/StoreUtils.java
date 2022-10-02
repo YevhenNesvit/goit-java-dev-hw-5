@@ -26,8 +26,9 @@ public class StoreUtils {
 
     public Order orderToObj(StringBuffer response) {
         String orderToObj = String.valueOf(response);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        return new Gson().fromJson(orderToObj, Order.class);
+        return gson.fromJson(orderToObj, Order.class);
     }
 
     public boolean IsOrderExists(Long id) throws IOException {
@@ -37,7 +38,8 @@ public class StoreUtils {
 
     public Map<String, Integer> petsStatusesToObj(StringBuffer response) {
         String petStatusesToObj = String.valueOf(response);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        return new Gson().fromJson(petStatusesToObj, Map.class);
+        return gson.fromJson(petStatusesToObj, Map.class);
     }
 }

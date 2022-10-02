@@ -47,7 +47,7 @@ public class StoreService {
     }
 
     public Order getOrderById(Long id) throws IOException {
-        URL url = new URL(String.format(STORE + id));
+        URL url = new URL(STORE + id);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Content-Type", "application/json");
@@ -81,7 +81,7 @@ public class StoreService {
     }
 
     public Map<String, Integer> getPetStatusesList() throws IOException {
-        URL url = new URL(String.format(PETS_STATUSES));
+        URL url = new URL(PETS_STATUSES);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Content-Type", "application/json");

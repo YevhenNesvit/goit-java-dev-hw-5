@@ -15,7 +15,7 @@ import java.util.List;
 public class PetUtils {
 
     public List<Pet> getMultiplePets(StringBuffer response) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Type type = new TypeToken<List<Pet>>() {
         }.getType();
 
@@ -24,8 +24,9 @@ public class PetUtils {
 
     public Pet petToObj(StringBuffer response) {
         String petToObj = String.valueOf(response);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        return new Gson().fromJson(petToObj, Pet.class);
+        return gson.fromJson(petToObj, Pet.class);
     }
 
     public String petToString(Long id, Integer categoryId, String categoryName, String name, String[] photoUrls,

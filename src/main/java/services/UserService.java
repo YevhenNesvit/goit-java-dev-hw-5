@@ -14,6 +14,7 @@ import java.util.List;
 public class UserService {
     public static final String USER_WITH_ARRAY = "https://petstore.swagger.io/v2/user/createWithArray/";
     public static final String USER_WITH_LIST = "https://petstore.swagger.io/v2/user/createWithList/";
+    public static final String USER = "https://petstore.swagger.io/v2/user/";
     UserUtils userUtils = new UserUtils();
 
     public void addUsersWithArray(User[] users) throws IOException {
@@ -72,5 +73,29 @@ public class UserService {
         } else {
             System.out.println("POST request not worked");
         }
+    }
+
+    public User getUserByUsername(String username) throws IOException {
+        URL url = new URL(USER + username);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        connection.setRequestProperty("Content-Type", "application/json");
+
+        int responseCode = connection.getResponseCode();
+//        System.out.println("GET response code: " + responseCode);
+        StringBuffer response = new StringBuffer();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in =
+                    new BufferedReader(
+                            new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+        } //else {
+//            System.out.println("GET request not worked");
+//        }
+        return userUtils.userToObj(response);
     }
 }

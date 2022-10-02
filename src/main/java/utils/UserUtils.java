@@ -19,4 +19,11 @@ public class UserUtils {
 
         return gson.toJson(users);
     }
+
+    public User userToObj(StringBuffer response) {
+        String userToObj = String.valueOf(response);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        return gson.fromJson(userToObj, User.class);
+    }
 }
