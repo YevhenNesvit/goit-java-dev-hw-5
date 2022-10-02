@@ -62,7 +62,7 @@ public class UploadService {
             outputStream.flush();
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                System.out.println(connection.getResponseCode() + " " + connection.getResponseMessage());
+//                System.out.println(connection.getResponseCode() + " " + connection.getResponseMessage());
                 BufferedReader in =
                         new BufferedReader(
                                 new InputStreamReader(connection.getInputStream()));
