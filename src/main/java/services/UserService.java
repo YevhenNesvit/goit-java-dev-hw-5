@@ -98,4 +98,34 @@ public class UserService {
 //        }
         return userUtils.userToObj(response);
     }
+
+    public void updateUserByUsername(Integer id, String username, String firstName, String lastName, String email, String password,
+                           String phone, Integer userStatus) throws IOException {
+        String user = userUtils.userToString(id, username, firstName, lastName, email, password, phone, userStatus);
+        URL url = new URL(USER + username);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("PUT");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Content-Type", "application/json");
+
+        DataOutputStream dos = new DataOutputStream(connection.getOutputStream());
+        dos.writeBytes(user);
+
+        int responseCode = connection.getResponseCode();
+//        System.out.println("PUT response code: " + responseCode);
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in =
+                    new BufferedReader(
+                            new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            System.out.println(response);
+        } else {
+            System.out.println("PUT request not worked");
+        }
+    }
 }
