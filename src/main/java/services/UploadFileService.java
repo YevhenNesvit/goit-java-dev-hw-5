@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class UploadService {
+public class UploadFileService {
     private static final String PET = "https://petstore.swagger.io/v2/pet/";
     private static final String nextLine = "\r\n";
     private static final String twoHyphens = "--";

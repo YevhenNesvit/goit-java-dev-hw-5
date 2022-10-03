@@ -1,6 +1,6 @@
 package command;
 
-import services.UploadService;
+import services.UploadFileService;
 import utils.PetUtils;
 import view.View;
 
@@ -10,7 +10,7 @@ public class PostPetImage implements Command {
     public static final String ADD_IMAGE = "add pet file";
     private final View view;
     PetUtils petUtils = new PetUtils();
-    UploadService uploadService = new UploadService();
+    UploadFileService uploadFileService = new UploadFileService();
 
     public PostPetImage(View view) {
         this.view = view;
@@ -33,7 +33,7 @@ public class PostPetImage implements Command {
                     view.write("Please, enter pet id to upload image: ");
                     id = Integer.parseInt(view.read());
                     if (petUtils.IsPetExists(id)) {
-                        uploadService.uploadFiles(id, filPath);
+                        uploadFileService.uploadFiles(id, filPath);
                         view.write("File for pet with id " + id + " successfully uploaded");
                         break;
                     } else {

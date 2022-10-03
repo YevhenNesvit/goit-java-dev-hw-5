@@ -116,9 +116,9 @@ public class PetService {
                 response.append(inputLine);
             }
             in.close();
-        } //else {
-//            System.out.println("GET request not worked");
-//        }
+        } else {
+            System.out.println("GET request not worked");
+        }
         return petUtils.petToObj(response);
     }
 

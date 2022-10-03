@@ -93,9 +93,9 @@ public class UserService {
                 response.append(inputLine);
             }
             in.close();
-        } //else {
-//            System.out.println("GET request not worked");
-//        }
+        } else {
+            System.out.println("GET request not worked");
+        }
         return userUtils.userToObj(response);
     }
 
@@ -171,9 +171,9 @@ public class UserService {
                 response.append(inputLine);
             }
             in.close();
-        } //else {
-//            System.out.println("GET request not worked");
-//        }
+        } else {
+            System.out.println("GET request not worked");
+        }
         return response;
     }
 
@@ -195,9 +195,40 @@ public class UserService {
                 response.append(inputLine);
             }
             in.close();
-        } //else {
-//            System.out.println("GET request not worked");
-//        }
+        } else {
+            System.out.println("GET request not worked");
+        }
         return response;
+    }
+
+    public void addUser(Integer id, String username, String firstName, String lastName, String email, String password,
+                        String phone, Integer userStatus)
+            throws IOException {
+        String user = userUtils.userToString(id, username, firstName, lastName, email, password, phone, userStatus);
+        URL url = new URL(USER);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Content-Type", "application/json");
+
+        DataOutputStream dos = new DataOutputStream(connection.getOutputStream());
+        dos.writeBytes(user);
+
+        int responseCode = connection.getResponseCode();
+//        System.out.println("POST response code: " + responseCode);
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in =
+                    new BufferedReader(
+                            new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            System.out.println(response);
+        } else {
+            System.out.println("POST request not worked");
+        }
     }
 }

@@ -64,9 +64,9 @@ public class StoreService {
                 response.append(inputLine);
             }
             in.close();
-        } //else {
-//            System.out.println("GET request not worked");
-//        }
+        } else {
+            System.out.println("GET request not worked");
+        }
         return storeUtils.orderToObj(response);
     }
 
@@ -112,9 +112,9 @@ public class StoreService {
                 response.append(inputLine);
             }
             in.close();
-        } //else {
-//            System.out.println("GET request not worked");
-//        }
+        } else {
+            System.out.println("GET request not worked");
+        }
         return storeUtils.petsStatusesToObj(response);
     }
 }
