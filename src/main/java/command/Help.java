@@ -34,6 +34,7 @@ public class Help implements Command {
         view.write(String.format("Enter %s to view user by username", GetUserByUsername.GET_USER_BY_USERNAME));
         view.write(String.format("Enter %s to update user by username", PutUserByUsername.PUT_USER_BY_USERNAME));
         view.write(String.format("Enter %s to delete user by username", DeleteUserByUsername.DELETE_USER_BY_USERNAME));
+        view.write(String.format("Enter %s to login user", GetUserLogin.GET_USER_LOGIN));
         view.write(String.format("Enter %s to exit program", Exit.EXIT));
     }
 }
